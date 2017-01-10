@@ -7,8 +7,8 @@
 ####################################################################################################
 
 # need to be changed on each official DB/CORE release
-FULLDB_FILE="ClassicDB_1_7_z2684.sql"
-DB_TITLE="v1.7 'The Scourge's Capital'"
+FULLDB_FILE="ClassicDB_1_8_z2692.sql"
+DB_TITLE="v1.8 'Lunar Festival'"
 NEXT_MILESTONES="0.19 0.20"
 
 #internal use
@@ -157,7 +157,7 @@ echo
 echo "> Trying to retrieve last core update packaged in database ..."
 LAST_CORE_REV=0
 CORE_REVS="$(grep -r "^.*required_z[0-9]*.* DEFAULT NULL" ${ADDITIONAL_PATH}Full_DB/* | sed 's/.*required_z\([0-9]*\).*/\1/') "
-CORE_REVS+=$(grep -ri '.*alter table.*required_z' ${ADDITIONAL_PATH}updates/* | sed 's/.*required_z\([0-9]*\).*required_z\([0-9]*\).*/\1 \2/')
+CORE_REVS+=$(grep -ri '.*alter table.*required_z' ${ADDITIONAL_PATH}Updates/* | sed 's/.*required_z\([0-9]*\).*required_z\([0-9]*\).*/\1 \2/')
 if [ "$CORE_REVS" != "" ]
 then
   for rev in $CORE_REVS
@@ -239,6 +239,37 @@ then
   done
   echo "  CORE UPDATE PROCESSED: $UPD_PROCESSED"
   echo "  CORE UPDATE FOUND BUT ALREADY IN DB: $UPD_FOUND"
+  echo
+  echo
+
+  # Apply dbc folder
+  echo "> Trying to apply $CORE_PATH/sql/base/dbc/original_data ..."
+  for f in "$CORE_PATH/sql/base/dbc/original_data/"*.sql
+  do
+    echo "    Appending DBC file update `basename $f` to database $DATABASE"
+    $MYSQL_COMMAND < $f
+    if [[ $? != 0 ]]
+    then
+      echo "ERROR: cannot apply $f"
+      exit 1
+    fi
+  done
+  echo "  DBC datas successfully applied"
+  echo
+  echo
+  # Apply dbc changes (specific fixes to known wrong/missing data)
+  echo "> Trying to apply $CORE_PATH/sql/base/dbc/cmangos_fixes ..."
+  for f in "$CORE_PATH/sql/base/dbc/cmangos_fixes/"*.sql
+  do
+    echo "    Appending CMaNGOS DBC file fixes `basename $f` to database $DATABASE"
+    $MYSQL_COMMAND < $f
+    if [[ $? != 0 ]]
+    then
+      echo "ERROR: cannot apply $f"
+      exit 1
+    fi
+  done
+  echo "  DBC changes successfully applied"
   echo
   echo
 
