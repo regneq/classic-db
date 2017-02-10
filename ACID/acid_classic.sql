@@ -5446,6 +5446,8 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 -- Bloodscalp Berserker
 ('59701','597','2','0','100','0','30','0','0','0','11','8599','0','1','1','-46','0','0','0','0','0','0','Bloodscalp Berserker - Cast Enrage at 30% HP'),
 ('59702','597','2','0','100','0','15','0','0','0','25','0','0','0','1','-47','0','0','0','0','0','0','Bloodscalp Berserker - Flee at 15% HP'),
+-- Skullsplitter Hunter
+('66901','669','1','0','100','0','5000','5000','0','0','11','3621','0','0','0','0','0','0','0','0','0','0','Skullsplitter Hunter - Cast Skullsplitter Pet'),
 -- Venture Co. Strip Miner
 ('67401','674','4','0','100','0','0','0','0','0','11','7978','1','1','0','0','0','0','0','0','0','0','Venture Co Strip Miner - Cast Throw Dynamite'),
 ('67402','674','0','0','100','1','8000','14000','12000','18000','11','8800','4','0','0','0','0','0','0','0','0','0','Venture Co Strip Miner - Cast Dynamite'),
@@ -5512,6 +5514,8 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 -- Skullsplitter Berserker
 ('78301','783','0','0','100','1','5000','7000','23000','26000','11','3148','1','0','0','0','0','0','0','0','0','0','Skullsplitter Berserker - Cast Head Crack'),
 ('78302','783','2','0','100','0','15','0','0','0','25','0','0','0','1','-47','0','0','0','0','0','0','Skullsplitter Berserker - Flee at 15% HP'),
+-- Skullsplitter Beastmaster
+('78401','784','1','0','100','0','5000','5000','0','0','11','3621','0','0','0','0','0','0','0','0','0','0','Skullsplitter Beastmaster - Cast Skullsplitter Pet'),
 -- Sergeant Malthus
 ('81401','814','0','0','100','1','0','500','10900','18600','11','7068','1','32','0','0','0','0','0','0','0','0','Sergeant Malthus - Cast Veil of Shadow'),
 ('81402','814','2','0','100','0','15','0','0','0','25','0','0','0','1','-47','0','0','0','0','0','0','Sergeant Malthus - Flee at 15% HP'),
@@ -9256,11 +9260,12 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 ('1446201','14462','9','0','100','1','0','5','12000','16000','11','11428','1','0','0','0','0','0','0','0','0','0','Thundering Invader - Cast Knockdown'),
 ('1446202','14462','0','0','100','1','7000','11000','9000','13000','11','23114','4','1','0','0','0','0','0','0','0','0','Thundering Invader - Cast Earth Shock'),
 -- Avalanchion
-('1446401','14464','4','0','100','0','0','0','0','0','1','-986','0','0','0','0','0','0','0','0','0','0','Avalanchion - Say on Aggro'),
+('1446401','14464','4','0','100','0','0','0','0','0','1','-986','-1490','0','0','0','0','0','0','0','0','0','Avalanchion - Say on Aggro'),
 ('1446402','14464','9','0','100','1','5','30','5000','8000','11','23392','4','0','0','0','0','0','0','0','0','0','Avalanchion - Cast Boulder'),
 ('1446403','14464','0','0','100','1','7000','12000','10000','13000','11','6524','0','1','0','0','0','0','0','0','0','0','Avalanchion - Cast Ground Tremor'),
 ('1446404','14464','9','0','100','1','0','8','8000','11000','11','5568','0','1','0','0','0','0','0','0','0','0','Avalanchion - Cast Trample'),
-('1446405','14464','6','0','100','0','0','0','0','0','1','-987','0','0','0','0','0','0','0','0','0','0','Avalanchion - Say on Death'),
+('1446405','14464','1','0','100','1','10000','60000','300000','420000','1','-1491','0','0','0','0','0','0','0','0','0','0','Avalanchion - Random Yell OOC'),
+('1446406','14464','6','0','100','0','0','0','0','0','1','-987','0','0','0','0','0','0','0','0','0','0','Avalanchion - Say on Death'),
 
 
 
@@ -11052,6 +11057,7 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 ('1032101','10321','9','0','100','1','0','5','8000','11000','11','15584','1','0','0','0','0','0','0','0','0','0','Emberstrife - Cast Cleave'),
 ('1032102','10321','0','0','100','1','7000','9000','10000','12000','11','9573','1','0','0','0','0','0','0','0','0','0','Emberstrife - Cast Flame Breath'),
 ('1032103','10321','2','0','100','1','30','0','120000','120000','11','8269','0','1','1','-106','0','0','0','0','0','0','Emberstrife - Cast Frenzy at 30% HP'),
+('1032104','10321','2','0','100','0','10','0','0','0','1','-1482','0','0','0','0','0','0','0','0','0','0','Emberstrife - Textemote at 10% HP'),
 -- Summoned Water Elemental (10955) - NSR
 -- Timothy Worthington
 ('1105201','11052','2','0','100','0','15','0','0','0','25','0','0','0','1','-47','0','0','0','0','0','0','Timothy Worthington - Flee at 15% HP'),
@@ -12660,9 +12666,20 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 -- Layo Starstrike 13220
 -- Hive'Ashi Ambusher 13301
 -- Highlord Demitrian 14347   npc_highlord_demitrian
--- Prince Thunderaan 14435
--- The Windreaver 14454
--- Whirling Invader 14455
+-- Prince Thunderaan
+('1443501','14435','11','0','100','0','0','0','0','0','21','0','0','0','0','0','0','0','0','0','0','0','Prince Thunderaan - Prevent Combat Movement On Spawn'),
+('1443502','14435','4','0','100','0','0','0','0','0','1','-1309','0','0','0','0','0','0','0','0','0','0','Prince Thunderaan - Yell on Aggro'),
+('1443503','14435','0','0','100','1','9000','13000','16000','20000','11','23009','0','1','0','0','0','0','0','0','0','0','Prince Thunderaan - Cast Tendrils of Air'),
+('1443504','14435','0','0','100','1','7500','8500','10000','15000','11','23011','0','0','0','0','0','0','0','0','0','0','Prince Thunderaan - Cast Tears of the Wind Seeker'),
+-- The Windreaver
+('1445401','14454','11','0','100','0','0','0','0','0','1','-1485','0','0','0','0','0','0','0','0','0','0','The Windreaver - Emote on Spawn'),
+('1445402','14454','9','0','100','1','0','20','9000','13000','11','23104','1','0','0','0','0','0','0','0','0','0','The Windreaver - Cast Shock'),
+('1445403','14454','0','0','100','1','7700','7700','19600','37200','11','23105','4','1','0','0','0','0','0','0','0','0','The Windreaver - Cast Lightning Cloud'),
+('1445404','14454','9','0','100','1','0','30','3400','4800','11','23106','1','0','0','0','0','0','0','0','0','0','The Windreaver - Cast Chain Lightning'),
+('1445405','14454','0','0','100','1','1000','3000','14000','21000','11','23103','4','0','0','0','0','0','0','0','0','0','The Windreaver - Cast Enveloping Winds'),
+('1445406','14454','6','0','100','0','0','0','0','0','1','-1486','0','0','0','0','0','0','0','0','0','0','The Windreaver - Emote on Death'),
+-- Whirling Invader
+('1445501','14455','0','0','100','1','6000','9000','8000','12000','11','17207','0','0','0','0','0','0','0','0','0','0','Whirling Invader - Cast Whirlwind'),
 -- Setis 14471
 -- Gretheer 14472
 -- Lapress 14473
@@ -14688,6 +14705,14 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 ('1004002','10040','9','5','100','1','0','5','4000','6000','11','14120','1','0','0','0','0','0','0','0','0','0','Gorishi Hive Guard - Cast Tunneler Acid (Phase 1)'),
 ('1004003','10040','24','5','100','1','14120','5','5000','5000','22','2','0','0','0','0','0','0','0','0','0','0','Gorishi Hive Guard - Set Phase 2 on Target Max Tunneler Acid Aura Stack (Phase 1)'),
 ('1004004','10040','28','3','100','1','14120','1','5000','5000','22','1','0','0','0','0','0','0','0','0','0','0','Gorishi Hive Guard - Set Phase 1 on Target Missing Tunneler Acid Aura Stack (Phase 2)'),
+-- Blazing Invader
+('1446001','14460','9','0','100','1','0','8','11000','14000','11','23113','0','1','0','0','0','0','0','0','0','0','Blazing Invader - Cast Blast Wave'),
+-- Baron Charr
+('1446101','14461','11','0','100','0','0','0','0','0','1','-1487','0','0','0','0','0','0','0','0','0','0','Baron Charr - Yell on Spawn'),
+('1446102','14461','9','0','100','1','0','20','2400','4700','11','9574','1','0','0','0','0','0','0','0','0','0','Baron Charr - Cast Flame Buffet'),
+('1446103','14461','0','0','100','1','3700','24100','6000','18300','11','15285','1','0','0','0','0','0','0','0','0','0','Baron Charr - Fireball Volley'),
+('1446104','14461','1','0','100','1','10000','60000','300000','420000','1','-1488','0','0','0','0','0','0','0','0','0','0','Baron Charr - Random Yell OOC'),
+('1446105','14461','6','0','100','0','0','0','0','0','1','-1489','0','0','0','0','0','0','0','0','0','0','Baron Charr - Yell on Death'),
 
 
 -- ============
@@ -14917,8 +14942,20 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 -- Izzy Coppergrab 13917
 -- Earthcaller Franzahl 14348
 -- Winterfall Ambusher 14372
--- Princess Tempestria 14457
--- Watery Invader 14458
+-- Princess Tempestria
+('1445701','14457','11','0','100','0','0','0','0','0','1','-1483','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Random Yell on Spawn'),
+('1445702','14457','4','0','100','0','0','0','0','0','49','1','0','0','22','1','0','0','0','0','0','0','Princess Tempestria - Enable Dynamic Movement and Set Phase 1 on Aggro'),
+('1445703','14457','9','5','100','1','8','40','9000','11000','11','23102','1','0','0','0','0','0','0','0','0','0','Princess Tempestria - Cast Frostbolt (Phase 1)'),
+('1445704','14457','9','5','100','1','9','80','1000','1000','49','1','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Enable Dynamic Movement at 9-80 Yards (Phase 1)'),
+('1445705','14457','9','0','100','1','0','8','1000','1000','49','0','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Disable Dynamic Movement at 0-8 Yards'),
+('1445706','14457','3','5','100','0','7','0','0','0','49','0','0','0','22','2','0','0','0','0','0','0','Princess Tempestria - Disable Dynamic Movement and Set Phase 2 when Mana is at 7% (Phase 1)'),
+('1445707','14457','3','3','100','1','100','15','1000','1000','22','1','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Set Phase 1 when Mana is above 15% (Phase 2)'),
+('1445708','14457','9','0','100','1','0','5','11000','15000','11','10987','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Cast Geyser'),
+('1445709','14457','0','0','100','1','9000','14000','16000','19000','11','14907','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Cast Frost Nova'),
+('1445710','14457','0','0','100','1','9000','14000','15000','19000','11','22746','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Cast Cone of Cold'),
+('1445711','14457','1','0','100','1','10000','60000','300000','420000','1','-1484','0','0','0','0','0','0','0','0','0','0','Princess Tempestria - Random Yell OOC'),
+-- Watery Invader
+('1445801','14458','0','0','100','1','15000','20000','16000','19000','11','19133','4','0','0','0','0','0','0','0','0','0','Watery Invader - Cast Frost Shock'),
 -- Artorius the Amiable 14531
 -- Artorius the Doombringer 14535
 -- Lumbering Horror 14697 NSR
@@ -15949,6 +15986,9 @@ INSERT INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_invers
 ('1026302','10263','0','0','100','1','10000','10000','10000','10000','11','16046','0','0','0','0','0','0','0','0','0','0','Burning Felguard - Blast Wave'),
 ('1026303','10263','0','0','100','1','5000','5000','15000','20000','11','15548','0','0','0','0','0','0','0','0','0','0','Burning Felguard - Thunderclap'),
 ('1026304','10263','0','0','100','1','5000','7000','4000','6000','11','15580','1','0','0','0','0','0','0','0','0','0','Burning Felguard -  Strike'),
+-- Solakar Flamewreath
+('1026401','10264','0','0','100','1','12000','15000','13500','16500','11','16727','0','1','0','0','0','0','0','0','0','0','Solakar Flamewreath - Cast War Stomp'),
+('1026402','10264','0','0','100','1','8000','10000','7500','10000','11','16556','0','0','0','0','0','0','0','0','0','0','Solakar Flamewreath - Cast Disturb Rookery Egg (FAST)'),
 -- Gizrul the Slavener
 ('1026801','10268','2','0','100','1','20','0','30000','30000','11','8269','0','0','0','0','0','0','0','0','0','0','Gizrul the Slavener - Frenzy'),
 ('1026802','10268','0','0','100','1','10000','10000','10000','10000','11','16495','1','0','0','0','0','0','0','0','0','0','Gizrul the Slavener - Fatal Bite'),
@@ -21807,7 +21847,7 @@ INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`langu
 ('-1306','You carry the taint of the scourge.  Prepare to enter the twisting nether.','0','0','0','Scarlet Monastery','0'),
 ('-1307','There is no escape for you.  The Crusade shall destroy all who carry the scourge\'s taint.','0','0','0','Scarlet Monastery','0'),
 ('-1308','The Scarlet Crusade shall smite the wicked and drive evil from these lands!','0','0','0','Scarlet Monastery','0'),
--- Please Re-use -1309
+('-1309','My power is discombobulatingly devastating! It is ludicrous that these mortals even attempt to enter my realm!','0','1','0','Prince Thunderaan','0'),
 ('-1310','Welcome to flavor country!','0','0','0','11058','0'),
 ('-1312','I can\'t believe dad won\'t let me keep your sister.','0','0','0','8666','0'),
 ('-1313','Can anyone give my adorable, extra little kitty a home?','0','0','0','8666','0'),
@@ -21846,7 +21886,17 @@ INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`langu
 ('-1478','You must save him!','0','0','0','11296','0'),
 ('-1479','I was devoured by Horgus! I can still feel his teeth upon me!','0','0','0','11296','0'),
 ('-1480','Beware Marduk! Beware, or your strength will wither.','0','0','0','11296','0'),
-('-1481','%s\'s physical form is weakened. You notice the Stone of Binding near the creature is glowing! Strike now!','0','2','0','2681','0');
+('-1481','%s\'s physical form is weakened. You notice the Stone of Binding near the creature is glowing! Strike now!','0','2','0','2681','0'),
+('-1482','%s\'s will falters.','0','2','0','10321','0'),
+('-1483','This frozen land shall suffice for a start. Come to me, mortals - and I shall give you a quick and painful death.','0','6','0','Princess Tempestria','0'),
+('-1484','If you mortals are all so craven, this will be much easier than I thought!','0','6','0','Princess Tempestria','0'),
+('-1485','%s causes a gale to sweep across the land, the sound of his mindless fury coming from the northwest.','0','3','0','The Windreaver','0'),
+('-1486','%s dissipates into the ether, his howling winds still ringing in your ears.','0','3','0','The Windreaver','0'),
+('-1487','Hear me, denizens of the crater! I come to burn this land of its impurity!','0','6','0','Baron Charr','0'),
+('-1488','Where are the so-called heroes of this world? Too frightened to come out and play?','0','6','0','Baron Charr','0'),
+('-1489','You have not seen the last of me fools! All will be consumed in the end!','0','6','0','Baron Charr','0'),
+('-1490','Tiny mortals - me HERE! Doom you meet!','0','6','0','Avalanchion','0'),
+('-1491','Where you hiding? Me find you!','0','6','0','Avalanchion','0');
 
 -- =======================================================
 -- Current Complete Summons Table for all Accepted Scripts
